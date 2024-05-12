@@ -42,7 +42,7 @@ git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
 popd
 
 # mkdir package/community
-pushd package/feeds/luci
+pushd feeds/luci/applications
 
 # 系统相关应用
 #Poweroff
