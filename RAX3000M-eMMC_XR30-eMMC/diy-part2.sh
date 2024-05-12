@@ -22,6 +22,10 @@ sed -i 's/OpenWrt/RAX3000M/g' package/base-files/files/bin/config_generate
 # ttyd自动登录
 # sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
 
+echo "********************"
+find -name luci-app-wol
+echo "********************"
+
 # 添加第三方应用
 mkdir kiddin9
 pushd kiddin9
