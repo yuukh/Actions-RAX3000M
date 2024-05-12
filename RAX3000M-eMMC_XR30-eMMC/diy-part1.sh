@@ -19,6 +19,10 @@
 # git clone https://github.com/messense/aliyundrive-webdav package/messense
 # git clone --depth=1 https://github.com/Siriling/5G-Modem-Support .
 
+echo "********************"
+pwd
+echo "********************"
+
 # 添加第三方应用
 mkdir kiddin9
 pushd kiddin9
