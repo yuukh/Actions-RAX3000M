@@ -11,7 +11,7 @@
 #
 
 # 修改openwrt登陆地址,把下面的 192.168.10.1 修改成你想要的就可以了
-# sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
 # 修改子网掩码
 #sed -i 's/255.255.255.0/255.255.0.0/g' package/base-files/files/bin/config_generate
@@ -165,7 +165,7 @@ cp -rf ../MyConfig/configs/istoreos/general/applications/luci-app-sms-tool/* luc
 # 5G模组管理插件+AT工具
 mkdir luci-app-modem
 cp -rf ../Modem-Support/luci-app-modem/* luci-app-modem
-sed -i 's/+kmod-pcie_mhi \\//' luci-app-modem/Makefile
+sed -i "/kmod-pcie_mhi/d" luci-app-modem/Makefile
 popd
 
 ##-----------------Add OpenClash dev core------------------
