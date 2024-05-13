@@ -43,8 +43,8 @@ pushd package
 
 # 系统相关应用
 #Poweroff
-mkdir luci-app-poweroff
-cp -rf ../kiddin9/luci-app-poweroff/* luci-app-poweroff
+# mkdir luci-app-poweroff
+# cp -rf ../kiddin9/luci-app-poweroff/* luci-app-poweroff
 #Diskman
 mkdir luci-app-diskman
 cp -rf ../kiddin9/luci-app-diskman/* luci-app-diskman
@@ -165,7 +165,6 @@ cp -rf ../MyConfig/configs/istoreos/general/applications/luci-app-sms-tool/* luc
 # 5G模组管理插件+AT工具
 mkdir luci-app-modem
 cp -rf ../Modem-Support/luci-app-modem/* luci-app-modem
-# sed -i 's/+kmod-pcie_mhi \\//' luci-app-modem/Makefile
 sed -i "/kmod-pcie_mhi/d" luci-app-modem/Makefile
 popd
 
