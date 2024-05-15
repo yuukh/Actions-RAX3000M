@@ -17,7 +17,7 @@ sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 #sed -i 's/255.255.255.0/255.255.0.0/g' package/base-files/files/bin/config_generate
 
 # 修改主机名字，把 RAX3000M 修改你喜欢的就行（不能纯数字或者使用中文）
-sed -i 's/OpenWrt/RAX3000M/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/RAX3000M/g' package/base-files/files/bin/config_generate
 
 # ttyd自动登录
 # sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
@@ -43,9 +43,12 @@ pushd package
 
 # 系统相关应用
 #Poweroff
+git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff .
 # mkdir luci-app-poweroff
 # cp -rf ../kiddin9/luci-app-poweroff/* luci-app-poweroff
 #Diskman
+rm -rf ../package/feeds/luci/luci-app-diskman
+rm -rf ../feeds/luci/applications/luci-app-diskman
 mkdir luci-app-diskman
 cp -rf ../kiddin9/luci-app-diskman/* luci-app-diskman
 #Fileassistant
@@ -70,9 +73,21 @@ cp -rf ../kiddin9/luci-app-wifischedule/* luci-app-wifischedule
 #RAMfree
 mkdir luci-app-ramfree
 cp -rf ../kiddin9/luci-app-ramfree/* luci-app-ramfree
-#终端
+#ttyd（终端）
 # mkdir luci-app-ttyd
 # cp -rf ../kiddin9/luci-app-ttyd/* luci-app-ttyd
+#NetData（系统监控）
+mkdir luci-app-netdata
+cp -rf ../kiddin9/luci-app-netdata/* luci-app-netdata
+#rtbwmon（实施流量）
+mkdir luci-app-rtbwmon
+cp -rf ../kiddin9/luci-app-rtbwmon/* luci-app-rtbwmon
+
+# 存储相关应用
+rm -rf ../package/feeds/luci/luci-app-samba4
+rm -rf ../feeds/luci/applications/luci-app-samba4
+mkdir luci-app-samba4
+cp -rf ../kiddin9/luci-app-samba4/* luci-app-samba4
 
 # 科学上网和代理应用
 #OpenClash
