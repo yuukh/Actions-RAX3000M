@@ -57,10 +57,9 @@ cp -rf ../kiddin9/luci-app-fileassistant/* luci-app-fileassistant
 #Guest-wifi
 mkdir luci-app-guest-wifi
 cp -rf ../kiddin9/luci-app-guest-wifi/* luci-app-guest-wifi
-#Onliner (need luci-app-nlbwmon)
+#Onliner
 mkdir luci-app-onliner
 cp -rf ../kiddin9/luci-app-onliner/* luci-app-onliner
-#svn export https://github.com/rufengsuixing/luci-app-onliner/trunk luci-app-onliner
 #Eqos
 # mkdir luci-app-eqos
 # cp -rf ../kiddin9/luci-app-eqos/* luci-app-eqos
