@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 ###############手动修改##############
-name: RAX3000M-Nand
+name: RAX3000M-Nand-hanwckf
 
 on:
   repository_dispatch:
