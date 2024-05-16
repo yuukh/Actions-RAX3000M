@@ -83,9 +83,13 @@ mkdir luci-app-rtbwmon
 cp -rf ../kiddin9/luci-app-rtbwmon/* luci-app-rtbwmon
 
 # 存储相关应用
+rm -rf ../package/feeds/luci/autoshare-samba
+rm -rf ../feeds/luci/applications/autoshare-samba
 rm -rf ../package/feeds/luci/luci-app-samba4
 rm -rf ../feeds/luci/applications/luci-app-samba4
+mkdir autoshare-samba
 mkdir luci-app-samba4
+cp -rf ../kiddin9/autoshare-samba/* autoshare-samba
 cp -rf ../kiddin9/luci-app-samba4/* luci-app-samba4
 
 # 科学上网和代理应用
