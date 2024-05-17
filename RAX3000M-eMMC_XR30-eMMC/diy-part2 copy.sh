@@ -6,18 +6,21 @@
 # See /LICENSE for more information.
 #
 # https://github.com/P3TERX/Actions-OpenWrt
-# File name: diy-part1.sh
-# Description: OpenWrt DIY script part 1 (Before Update feeds)
+# File name: diy-part2.sh
+# Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# Uncomment a feed source
-#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
+# 修改openwrt登陆地址,把下面的 192.168.10.1 修改成你想要的就可以了
+sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
 
-# Add a feed source
-#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-# git clone https://github.com/messense/aliyundrive-webdav package/messense
-# git clone --depth=1 https://github.com/Siriling/5G-Modem-Support .
+# 修改子网掩码
+#sed -i 's/255.255.255.0/255.255.0.0/g' package/base-files/files/bin/config_generate
+
+# 修改主机名字，把 RAX3000M 修改你喜欢的就行（不能纯数字或者使用中文）
+sed -i 's/ImmortalWrt/RAX3000M/g' package/base-files/files/bin/config_generate
+
+# ttyd自动登录
+# sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
 
 # 添加第三方应用
 mkdir kiddin9
@@ -80,6 +83,10 @@ mkdir luci-app-rtbwmon
 cp -rf ../kiddin9/luci-app-rtbwmon/* luci-app-rtbwmon
 
 # 存储相关应用
+rm -rf ../package/feeds/luci/autoshare-samba
+rm -rf ../feeds/luci/applications/autoshare-samba
+rm -rf ../package/feeds/luci/luci-app-samba4
+rm -rf ../feeds/luci/applications/luci-app-samba4
 mkdir autoshare-samba
 mkdir luci-app-samba4
 cp -rf ../kiddin9/autoshare-samba/* autoshare-samba
@@ -178,3 +185,17 @@ mkdir luci-app-modem
 cp -rf ../Modem-Support/luci-app-modem/* luci-app-modem
 sed -i "/kmod-pcie_mhi/d" luci-app-modem/Makefile
 popd
+
+##-----------------Add OpenClash dev core------------------
+curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz -o /tmp/clash.tar.gz
+tar zxvf /tmp/clash.tar.gz -C /tmp >/dev/null 2>&1
+chmod +x /tmp/clash >/dev/null 2>&1
+mkdir -p feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
+mv /tmp/clash feeds/luci/applications/luci-app-openclash/root/etc/openclash/core/clash >/dev/null 2>&1
+rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
+
+##-----------------Delete DDNS's examples-----------------
+# sed -i '/myddns_ipv4/,$d' feeds/packages/net/ddns-scripts/files/etc/config/ddns
+
+##-----------------Manually set CPU frequency for MT7981B-----------------
+sed -i '/"mediatek"\/\*|\"mvebu"\/\*/{n; s/.*/\tcpu_freq="1.3GHz" ;;/}' package/emortal/autocore/files/generic/cpuinfo
