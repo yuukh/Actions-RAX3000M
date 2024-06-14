@@ -178,6 +178,7 @@ cp -rf ../kiddin9/luci-app-quickstart/* luci-app-quickstart
 
 # 5G通信模组拨号工具
 mkdir quectel_QMI_WWAN
+mkdir fibocom_QMI_WWAN
 mkdir quectel_cm_5G
 # mkdir quectel_MHI
 # mkdir luci-app-hypermodem
