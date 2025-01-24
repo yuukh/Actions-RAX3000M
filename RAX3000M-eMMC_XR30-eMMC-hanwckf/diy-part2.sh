@@ -19,13 +19,6 @@ sed -i 's/ImmortalWrt/RAX3000M/g' package/base-files/files/bin/config_generate
 
 ##-----------------Del duplicate packages------------------
 rm -rf feeds/packages/net/open-app-filter
-##-----------------Add OpenClash dev core------------------
-# curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz -o /tmp/clash.tar.gz
-# tar zxvf /tmp/clash.tar.gz -C /tmp >/dev/null 2>&1
-# chmod +x /tmp/clash >/dev/null 2>&1
-# mkdir -p feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
-# mv /tmp/clash feeds/luci/applications/luci-app-openclash/root/etc/openclash/core/clash >/dev/null 2>&1
-# rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 ##-----------------Delete DDNS's examples-----------------
 sed -i '/myddns_ipv4/,$d' feeds/packages/net/ddns-scripts/files/etc/config/ddns
 ##-----------------Manually set CPU frequency for MT7981B-----------------
@@ -106,14 +99,15 @@ mkdir luci-app-openclash
 cp -rf ../kiddin9/luci-app-openclash/* luci-app-openclash
 cp -rf ../MyConfig/configs/istoreos/general/applications/luci-app-openclash/* luci-app-openclash
 #加入OpenClash核心
-# chmod -R a+x $GITHUB_WORKSPACE/scripts/preset-clash-core.sh
-# if [ "$1" = "rk33xx" ]; then
-#     $GITHUB_WORKSPACE/scripts/preset-clash-core.sh arm64
-# elif [ "$1" = "rk35xx" ]; then
-#     $GITHUB_WORKSPACE/scripts/preset-clash-core.sh arm64
-# elif [ "$1" = "x86" ]; then
-#     $GITHUB_WORKSPACE/scripts/preset-clash-core.sh amd64
-# fi
+chmod -R a+x $GITHUB_WORKSPACE/scripts/preset-clash-core.sh
+$GITHUB_WORKSPACE/scripts/preset-clash-core.sh arm64
+#加入OpenClash Dev核心
+# curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz -o /tmp/clash.tar.gz
+# tar zxvf /tmp/clash.tar.gz -C /tmp >/dev/null 2>&1
+# chmod +x /tmp/clash >/dev/null 2>&1
+# mkdir -p feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
+# mv /tmp/clash feeds/luci/applications/luci-app-openclash/root/etc/openclash/core/clash >/dev/null 2>&1
+# rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
 
 # 去广告
 #ADGuardHome（kiddin9）
