@@ -172,6 +172,10 @@ mkdir quectel_cm_5G
 cp -rf ../Modem-Support/quectel_QMI_WWAN/* quectel_QMI_WWAN
 cp -rf ../Modem-Support/fibocom_QMI_WWAN/* fibocom_QMI_WWAN
 cp -rf ../Modem-Support/meig_QMI_WWAN/* meig_QMI_WWAN
+sed -i 's/qmi_wwan/qmi_wwan_m/' meig_QMI_WWAN/Makefile
+sed -i 's/qmi_wwan/qmi_wwan_m/' meig_QMI_WWAN/src/Makefile
+mv meig_QMI_WWAN/src/qmi_wwan.c meig_QMI_WWAN/src/qmi_wwan_m.c
+sed -i 's/"qmi_wwan"/"qmi_wwan_m"/' meig_QMI_WWAN/src/qmi_wwan_m.c
 cp -rf ../Modem-Support/quectel_cm_5G/* quectel_cm_5G
 # cp -rf ../Modem-Support/quectel_MHI/* quectel_MHI
 # cp -rf ../Modem-Support/luci-app-hypermodem/* luci-app-hypermodem
