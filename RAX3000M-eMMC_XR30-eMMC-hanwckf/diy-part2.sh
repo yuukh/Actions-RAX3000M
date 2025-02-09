@@ -191,9 +191,7 @@ popd
 
 # 设置GCC版本
 cp -rf MyConfig/configs/hanwckf/toolchain/* toolchain
-echo "***************"
-ls toolchain/gcc/patches
-echo "***************"
+
 # 更新uhttpd版本（防止在GCC版本为13.3.0时报错）
 # rm -rf package/network/services/uhttpd
 # cp -rf MyConfig/configs/hanwckf/package/* package
