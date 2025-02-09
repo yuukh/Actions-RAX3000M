@@ -115,7 +115,7 @@ mkdir luci-app-adguardhome
 cp -rf ../kiddin9/luci-app-adguardhome/* luci-app-adguardhome
 cp -rf ../MyConfig/configs/istoreos/general/applications/luci-app-adguardhome/* luci-app-adguardhome
 sed -i 's/拦截DNS服务器/拦截DNS服务器（默认用户名和密码均为root）/' luci-app-adguardhome/po/zh_Hans/adguardhome.po
-sed -i 's/+PACKAGE_$(PKG_NAME)_INCLUDE_binary:adguardhome//' luci-app-adguardhome/Makefile
+#sed -i 's/+PACKAGE_$(PKG_NAME)_INCLUDE_binary:adguardhome//' luci-app-adguardhome/Makefile
 #ADGuardHome（kenzok8）
 # cp -rf temp/luci-app-adguardhome/* luci-app-adguardhome
 # sed -i 's/默认账号和密码均为：admin/默认用户名和密码均为root/' luci-app-adguardhome/po/zh-cn/AdGuardHome.po
@@ -188,3 +188,9 @@ mkdir luci-app-modem
 cp -rf ../Modem-Support/luci-app-modem/* luci-app-modem
 sed -i "/kmod-pcie_mhi/d" luci-app-modem/Makefile
 popd
+
+# 设置GCC版本
+cp -rf MyConfig/configs/hanwckf/toolchain/* toolchain
+# 更新uhttpd版本（防止在GCC版本为13.3.0时报错）
+# rm -rf package/network/services/uhttpd
+# cp -rf MyConfig/configs/hanwckf/package/* package
