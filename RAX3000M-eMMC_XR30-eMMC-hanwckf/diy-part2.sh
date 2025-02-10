@@ -192,7 +192,7 @@ popd
 # 设置GCC版本
 cp -rf MyConfig/configs/hanwckf/toolchain/* toolchain
 
-#解决错误elfutils编译错误
+#解决elfutils编译错误
 cp -rf MyConfig/configs/hanwckf/package/libs package
 
 # 更新uhttpd版本（防止在GCC版本为13.3.0时报错）
