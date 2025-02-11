@@ -38,7 +38,7 @@ popd
 # mkdir MyConfig
 # pushd MyConfig
 # git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
-popd
+# popd
 
 # mkdir package/community
 pushd package
