@@ -35,9 +35,9 @@ pushd Modem-Support
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support .
 popd
 
-mkdir MyConfig
-pushd MyConfig
-git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
+# mkdir MyConfig
+# pushd MyConfig
+# git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
 popd
 
 # mkdir package/community

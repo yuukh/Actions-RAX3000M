@@ -18,3 +18,11 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 #git clone https://github.com/messense/aliyundrive-webdav package/messense
 git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
+
+mkdir MyConfig
+pushd MyConfig
+git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
+
+#解决elfutils编译错误
+rm -rf package/libs/elfutils
+cp -rf MyConfig/configs/hanwckf/package/libs package
