@@ -22,6 +22,7 @@ git clone https://github.com/destan19/OpenAppFilter package/OpenAppFilter
 mkdir MyConfig
 pushd MyConfig
 git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
+popd
 
 #解决elfutils编译错误
 rm -rf package/libs/elfutils
