@@ -35,10 +35,10 @@ pushd Modem-Support
 git clone --depth=1 https://github.com/Siriling/5G-Modem-Support .
 popd
 
-# mkdir MyConfig
-# pushd MyConfig
-# git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
-# popd
+mkdir MyConfig
+pushd MyConfig
+git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
+popd
 
 # mkdir package/community
 pushd package
@@ -188,3 +188,14 @@ mkdir luci-app-modem
 cp -rf ../Modem-Support/luci-app-modem/* luci-app-modem
 sed -i "/kmod-pcie_mhi/d" luci-app-modem/Makefile
 popd
+
+# 设置GCC版本
+# cp -rf MyConfig/configs/hanwckf/toolchain/* toolchain
+
+#解决elfutils编译错误
+# rm -rf package/libs/elfutils
+# cp -rf MyConfig/configs/hanwckf/package/libs package
+
+# 更新uhttpd版本（防止在GCC版本为13.3.0时报错）
+# rm -rf package/network/services/uhttpd
+# cp -rf MyConfig/configs/hanwckf/package/network package
