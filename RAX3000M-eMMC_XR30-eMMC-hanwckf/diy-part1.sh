@@ -25,5 +25,4 @@ git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
 popd
 
 #解决elfutils编译错误
-rm -rf package/libs/elfutils
 cp -rf MyConfig/configs/hanwckf/package/libs package
