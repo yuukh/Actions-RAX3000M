@@ -190,7 +190,7 @@ sed -i "/kmod-pcie_mhi/d" luci-app-modem/Makefile
 popd
 
 # 设置GCC版本
-# cp -rf MyConfig/configs/hanwckf/toolchain/* toolchain
+cp -rf MyConfig/configs/hanwckf/toolchain/* toolchain
 
 #解决elfutils编译错误
 # rm -rf package/libs/elfutils
