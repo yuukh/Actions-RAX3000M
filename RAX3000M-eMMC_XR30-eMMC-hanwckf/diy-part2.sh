@@ -23,3 +23,12 @@ rm -rf feeds/packages/net/open-app-filter
 sed -i '/myddns_ipv4/,$d' feeds/packages/net/ddns-scripts/files/etc/config/ddns
 ##-----------------Manually set CPU frequency for MT7981B-----------------
 sed -i '/"mediatek"\/\*|\"mvebu"\/\*/{n; s/.*/\tcpu_freq="1.3GHz" ;;/}' package/emortal/autocore/files/generic/cpuinfo
+
+# 添加第三方应用
+mkdir MyConfig
+pushd MyConfig
+git clone --depth=1 https://github.com/Siriling/OpenWRT-MyConfig .
+popd
+
+# 设置GCC版本
+cp -rf MyConfig/configs/hanwckf/toolchain/* toolchain
